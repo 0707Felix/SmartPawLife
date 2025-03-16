@@ -1,0 +1,31 @@
+
+.article{
+    background: url('/src/assets/img/home/articlebanner.jpg') 
+    center/cover 
+    no-repeat;
+    height: 400px;
+    margin-bottom: 96px;
+    opacity: 0.85;
+    background-position: center -0%;
+
+    .explore{
+        filter: brightness(150%) contrast(150%)
+    }
+}
+
+/* 當螢幕小於 768px（平板）時，使用較小的圖片 */
+@media (max-width: 768px) {
+    .about{
+        background-image: url('/src/assets/img/home/articlebanner.jpg');
+        height: 250px; /* 可根據需要調整高度 */
+    }
+}
+
+/* 當螢幕小於 480px（手機）時，再次更換更小的圖片 */
+@media (max-width: 480px) {
+    .about{
+        background-image: url('/src/assets/img/home/articlebanner.jpg');
+        height: 180px;
+        margin-bottom: 48px; /* 減少間距 */
+    }
+}

@@ -1,0 +1,24 @@
+.timeOffer {
+    background: #f7eee9;
+    padding: 219px 0 216px 0; /* 中、大螢幕的 padding */
+}
+
+  /* 小螢幕樣式 */
+  @media (max-width: 576px) {
+    .timeOffer {
+      padding: 130px 0 132px 0; /* 小螢幕的 padding */
+    }
+  }
+  .btn-outline-primary {
+    &:active,
+    &:hover {
+      color: white !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .wave-upbg {
+      background-size: contain !important; /* 讓圖片在小螢幕完整顯示 */
+      transform: translateY(-215%) !important; /* 視需求調整 */
+    }
+  }

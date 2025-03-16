@@ -1,0 +1,9 @@
+.nav-link {
+    &:hover,
+    &.active {
+      color: #E69270 !important; // 讓 hover 和 active 都變橘色
+    }
+  }
+
+  
+  

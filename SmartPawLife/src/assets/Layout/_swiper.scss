@@ -1,0 +1,35 @@
+/* Swiperbanner.css */
+
+:root {
+  --pagination-bullet-size: 16px; //圓點大小
+  --pagination-bullet-inactive-color: #ccc; //圓點顏色
+  --pagination-bullet-active-color: #A44119;//當前畫面圓點顏色
+  --pagination-bullet-margin: 0 6px;
+}
+
+.swiper-pagination-bullet {
+  width: var(--pagination-bullet-size);
+  height: var(--pagination-bullet-size);
+  background-color: var(--pagination-bullet-inactive-color);
+  margin: var(--pagination-bullet-margin);
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: var(--pagination-bullet-active-color);
+}
+
+.topicsearch{
+  position: absolute;
+  z-index: 2;
+  top:50%;
+  right:48%;
+}
+
+@media (max-width: 576px) {
+  .topicsearch {
+    top: auto; /* 移除 `top-50` */
+    bottom: 5%;
+    right: 0;
+  }
+}

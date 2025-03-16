@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'Swei Gothic CJK TC';
+  src: url('https://cdn.jsdelivr.net/gh/max32002/swei-gothic@2.129/WebFont/CJK%20TC/SweiGothicCJKtc-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+  @import "bootstrap/scss/functions";
+  @import "../helpers/variables"; // 这里你的自定义变量会生效
+  @import "bootstrap/scss/bootstrap";
+  @import "./header";
+  @import "./swiper";
+  @import "./home";
+  @import "./product";
+  @import "./custom";
+  @import "./about";
+  @import "./article"
