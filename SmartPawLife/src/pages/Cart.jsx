@@ -180,8 +180,8 @@ const Cart = () => {
                         </p>
                       </th>
                       <td
-                        className="border-0 align-middle"
-                        style={{ maxWidth: "160px" }}
+                        className="border-0 align-middle w-auto"
+                        // style={{ maxWidth: "420px" }}
                       >
                         <div className="input-group ps-3">
                           <div className="input-group-prepend">
@@ -194,7 +194,7 @@ const Cart = () => {
                                 );
                               }}
                               disabled={cartItem.qty === 1}
-                              className="btn btn-primary border-0 py-1 btn-sm mt-sm-3"
+                              className="btn btn-primary border-0 py-1 btn-sm mt-3"
                               type="button"
                               id="button-addon1"
                             >
@@ -203,7 +203,7 @@ const Cart = () => {
                           </div>
                           <input
                             type="text"
-                            className="form-control border-0 text-sm-center shadow-none fs-6 p-3 m-2"
+                            className="form-control border-0 text-center shadow-none fs-6 mx-sm-3 w-100"
                             placeholder=""
                             aria-label="Example text with button addon"
                             aria-describedby="button-addon1"
@@ -219,7 +219,7 @@ const Cart = () => {
                                   cartItem.qty + 1
                                 );
                               }}
-                              className="btn btn-primary border-0 py-1 btn-sm mt-sm-3"
+                              className="btn btn-primary border-0 py-1 btn-sm mt-3"
                               type="button"
                               id="button-addon2"
                             >

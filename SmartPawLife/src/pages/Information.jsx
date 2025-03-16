@@ -249,6 +249,7 @@ const Information = () => {
                   className="form-control w-25 text-center"
                   value={qtySelect}
                   min="1"
+                  readOnly
                   onChange={(e) => setQtySelect(Number(e.target.value))}
                 />
                 <button
