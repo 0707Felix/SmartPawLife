@@ -15,7 +15,7 @@
 
 /* 當螢幕小於 768px（平板）時，使用較小的圖片 */
 @media (max-width: 768px) {
-    .about{
+    .article{
         background-image: url('/img/article/articlebanner.jpg');
         height: 250px; /* 可根據需要調整高度 */
     }
@@ -23,7 +23,7 @@
 
 /* 當螢幕小於 480px（手機）時，再次更換更小的圖片 */
 @media (max-width: 480px) {
-    .about{
+    .article{
         background-image: url('/img/article/articlebanner.jpg');
         height: 180px;
         margin-bottom: 48px; /* 減少間距 */
