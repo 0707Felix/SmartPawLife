@@ -5,7 +5,7 @@ const Footer = () => {
       <div
         className="position-absolute start-0 w-100 wave-bg"
         style={{
-          backgroundImage: "url('/src/assets/img/home/Wave 4.svg')",
+          backgroundImage: "url('./img/home/Wave 4.svg')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           transform: "translateY(-15%)",
@@ -38,7 +38,7 @@ const Footer = () => {
             <ul className="d-flex justify-content-center gap-3 align-items-center list-unstyled m-0">
               <li>
               <a href="#"><img
-                  src="/src/assets/img/footer/facebook.png"
+                  src="./img/footer/facebook.png"
                   alt="Paw"
                   width="24"
                   height="24"
@@ -47,7 +47,7 @@ const Footer = () => {
               </li>
               <li>
               <a href="#"><img
-                  src="/src/assets/img/footer/ig.png"
+                  src="./img/footer/ig.png"
                   alt="Paw"
                   width="24"
                   height="24"
@@ -56,7 +56,7 @@ const Footer = () => {
               </li>
               <li>
                 <a href="#"><img
-                  src="/src/assets/img/footer/line.png"
+                  src="./img/footer/line.png"
                   alt="Paw"
                   width="24"
                   height="24"

@@ -18,7 +18,6 @@ const Home = () => {
   const [articles, setArticles] = useState([]);
   const swiperRefup = useRef(null);
   const swiperRefdown = useRef(null);
-  //取得所有商品
   const getAllProduct = async () => {
     try {
       const res = await axios.get(
@@ -130,7 +129,7 @@ const Home = () => {
         <div
           className="position-absolute start-0 w-100 wave-upbg"
           style={{
-            backgroundImage: "url('/src/assets/img/home/Wave 5.svg')",
+            backgroundImage: "url('./img/home/Wave 5.svg')",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             // backgroundPosition: "middlebottom center",
@@ -183,7 +182,7 @@ const Home = () => {
                 >
                   立即選購
                   <img
-                    src="/src/assets/img/swiper/Arrow.svg"
+                    src="./img/home/warrow.svg"
                     alt="Arrow"
                     className="ms-2 me-1"
                   />
@@ -196,7 +195,7 @@ const Home = () => {
       <div
         className="position-absolute start-0 w-100"
         style={{
-          backgroundImage: "url('/src/assets/img/home/Wave 2.svg')",
+          backgroundImage: "url('./img/home/Wave 2.svg')",
           backgroundSize: "cover",
           height: "40px",
           backgroundRepeat: "no-repeat",
@@ -266,7 +265,7 @@ const Home = () => {
               <ul className="list-unstyled fs-5">
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -276,7 +275,7 @@ const Home = () => {
                 </li>
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -286,7 +285,7 @@ const Home = () => {
                 </li>
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -301,8 +300,8 @@ const Home = () => {
               >
                 立即選購
                 <img
-                  src="/src/assets/img/home/arrow.svg"
-                  alt="Paw"
+                   src="./img/home/arrow.svg" 
+                   alt="Paw"
                   className="ms-2 me-1"
                 />
               </Link>
@@ -371,7 +370,7 @@ const Home = () => {
               <ul className="list-unstyled fs-5">
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -381,7 +380,7 @@ const Home = () => {
                 </li>
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -391,7 +390,7 @@ const Home = () => {
                 </li>
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -401,7 +400,7 @@ const Home = () => {
                 </li>{" "}
                 <li>
                   <img
-                    src="/src/assets/img/home/paw.svg"
+                    src="./img/home/paw.svg"
                     alt="Paw"
                     width="16"
                     height="16"
@@ -416,7 +415,7 @@ const Home = () => {
               >
                 更多新品
                 <img
-                  src="/src/assets/img/home/arrow.svg"
+                  src="./img/home/arrow.svg"
                   alt="Paw"
                   className="ms-2 me-1"
                 />
@@ -428,7 +427,7 @@ const Home = () => {
       <div
       className="position-absolute start-0 w-100 wave-bg"
           style={{
-            backgroundImage: "url('/src/assets/img/home/Wave 3.svg')",
+            backgroundImage: "url('./img/home/Wave 3.svg')",
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             transform: "translateY(-20%)",
@@ -441,7 +440,7 @@ const Home = () => {
         <div
           className="position-absolute top-0 start-0 w-100 h-100 z-1"
           style={{
-            backgroundImage: "url('/src/assets/img/home/background.png')",
+            backgroundImage: "url('./img/home/background.png')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",

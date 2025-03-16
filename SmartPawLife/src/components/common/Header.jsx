@@ -33,13 +33,13 @@ const routes = [
   {
     id: 5,
     title: "cart",
-    src: "./src/assets/img/header/cart.svg",
+    src: "./img/header/cart.svg",
     link: "/cart",
   },
   {
     id: 6,
     title: "login",
-    src: "./src/assets/img/header/login.svg",
+    src: "./img/header/login.svg",
     link: "/login",
   },
 ];

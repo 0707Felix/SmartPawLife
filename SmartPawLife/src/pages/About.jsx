@@ -55,7 +55,7 @@ const About = () => {
             ].map((item, index) => (
               <div className="d-flex justify-centent-between gap-3 mb-5" key={index}>
                 <p className="my-auto col-2">{item.year}</p>
-                    <img src={`/src/assets/img/about/Button${index+1}.svg`} alt={item.year} />
+                    <img src={`./img/about/Button${index+1}.svg`} alt={item.year} />
                 <div>
                   <p className="mb-2">
                     <strong className="text-primary">{item.title}</strong>
@@ -123,7 +123,7 @@ const About = () => {
                 <img
                   className="col-sm-3"
                   style={{ width: "auto" }}
-                  src="/src/assets/img/home/storyimg.png"
+                  src="./img/about/storyimg.png"
                   alt="社會責任"
                 />
 

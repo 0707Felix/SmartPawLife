@@ -2,11 +2,31 @@ import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import { Link, useNavigate } from "react-router-dom";
-import bannerImages from "../assets/img/swiper/banner";
+
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/autoplay";
 import "../assets/Layout/_swiper.scss";
+
+
+const bannerImages = [
+  {
+    id: 1,
+    image: "./img/swiper/banner1.png", // 桌機/平板版
+    mobileImage: "./img/swiper/smallbanner1.png", // 手機版
+  },
+  {
+    id: 2,
+    image: "./img/swiper/banner2.png",
+    mobileImage: "./img/swiper/smallbanner2.png",
+  },
+  {
+    id: 3,
+    image: "./img/swiper/banner3.png",
+    mobileImage: "./img/swiper/smallbanner3.png",
+  },
+];
+
 
 const Swiperbanner = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,6 +36,8 @@ const Swiperbanner = () => {
     e.preventDefault(); // 防止表單默認提交行為
     navigate("/product", { state: { searchTerm } }); // 傳遞 searchTerm // 跳轉到產品頁面並傳遞關鍵字
   };
+
+
 
   return (
     <>
@@ -64,7 +86,7 @@ const Swiperbanner = () => {
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
               <button className="btn btn-primary" type="submit">
-                <img src="./src/assets/img/swiper/Arrow.svg" alt="Arrow" />
+                <img src="./img/swiper/Arrow.svg" alt="Arrow" />
               </button>
             </form>
             <div>
@@ -74,7 +96,7 @@ const Swiperbanner = () => {
                   type="button"
                 >
                   立即選購
-                  <img src="./src/assets/img/swiper/Arrow.svg" alt="Arrow" />
+                  <img src="./img/swiper/Arrow.svg" alt="Arrow" />
                 </button>
               </Link>
             </div>

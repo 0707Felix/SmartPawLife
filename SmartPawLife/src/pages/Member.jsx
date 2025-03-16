@@ -3,7 +3,7 @@ const Member = ()=>{
         <div className="container">
         <img
         className="object-fit-cover img-fluid p-2"
-        src="/src/assets/img/home/member.png"
+        src="./img/home/member.png"
         alt="membergift"
       />
       </div>
