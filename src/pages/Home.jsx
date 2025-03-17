@@ -25,7 +25,7 @@ const Home = () => {
       );
       setAllProducts(res.data.products);
     } catch (error) {
-      alert("取得商品失敗");
+      console.error("取得商品失敗", error.response?.data || error.message);
     }
   };
   //取得所有文章
@@ -34,7 +34,7 @@ const Home = () => {
       const res = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/articles`);
       setArticles(res.data.articles);
     } catch (error) {
-      alert("取得文章失敗");
+      console.error("取得文章失敗", error.response?.data || error.message);
     }
   };
 

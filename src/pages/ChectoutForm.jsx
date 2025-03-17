@@ -93,15 +93,16 @@ const CheckoutForm = () => {
                 {...register("name", { required: "收件人姓名欄位必填" })}
                 type="text"
                 className={`form-control ${errors.name && "is-invalid"}`}
-                id="Contactname"
+                id="ContactName"
                 placeholder=""
+                autoComplete="name"  
               />
               {errors.name && (
                 <span className="text-danger">{errors.name.message}</span>
               )}
             </div>
             <div className="mb-3">
-              <label htmlFor="ContactName" className="text-muted mb-0">
+              <label htmlFor="Contactaddress" className="text-muted mb-0">
                 收件人地址
               </label>
               <input
@@ -110,6 +111,7 @@ const CheckoutForm = () => {
                 className={`form-control ${errors.address && "is-invalid"}`}
                 id="Contactaddress"
                 placeholder=""
+                autoComplete="street-address"
               />
               {errors.address && (
                 <span className="text-danger">{errors.address.message}</span>
@@ -131,6 +133,7 @@ const CheckoutForm = () => {
                 className={`form-control ${errors.phone && "is-invalid"}`}
                 id="ContactPhone"
                 placeholder="Password"
+                autoComplete="tel" 
               />
               {errors.phone && (
                 <span className="text-danger">{errors.phone.message}</span>
@@ -153,6 +156,7 @@ const CheckoutForm = () => {
                 id="ContactMail"
                 aria-describedby="emailHelp"
                 placeholder="example@gmail.com"
+                autoComplete="email"
               />
               {errors.email && (
                 <span className="text-danger">{errors.email.message}</span>

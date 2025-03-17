@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef} from "react";
 import axios from "axios";
 import { Modal } from "bootstrap";
 
@@ -48,22 +48,15 @@ const AdminCoupons = () => {
     }
   };
 
-  // 檢查用戶登入狀態
-  const checkUserLogin = async () => {
-    try {
-      await axios.post(`${BASE_URL}/v2/api/user/check`);
-      getCoupons(); // 登入成功後獲取優惠券列表
-    } catch (error) {
-      console.error("用戶未登入", error);
-    }
-  };
-
-  // 組件掛載時檢查登入狀態並獲取優惠券列表
   useEffect(() => {
-    const token = document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    getCoupons();
+    const token = document.cookie.replace(
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
     axios.defaults.headers.common["Authorization"] = token;
-    checkUserLogin();
   }, []);
+
 
   // 打開優惠券 Modal
   const handleOpenCouponModal = (mode, coupon) => {

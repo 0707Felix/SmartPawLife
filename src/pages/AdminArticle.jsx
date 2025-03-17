@@ -37,26 +37,18 @@ const AdminArticles= ()=> {
       );
       setArticles(res.data.articles);
     } catch (error) {
-      alert("取得文章失敗");
+      console.error("取得文章失敗", error?.message || error);
     }
   };
 
-  const checkUserLogin = async () => {
-    try {
-      await axios.post(`${BASE_URL}/v2/api/user/check`);
-      getArticles();
-    } catch (error) {
-      console.error(error);
-    }
-  };
+
   useEffect(() => {
     getArticles();
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
     axios.defaults.headers.common["Authorization"] = token;
-    checkUserLogin();
   }, []);
 
 
@@ -114,7 +106,7 @@ const AdminArticles= ()=> {
 
   const createArticle = async () => {
     try {
-      const res = await axios.post(
+      await axios.post(
         `${BASE_URL}/v2/api/${API_PATH}/admin/article`,
         { ...tempArticle } // 正確的寫法
       );
@@ -130,7 +122,7 @@ const AdminArticles= ()=> {
       };
 
       // 發送 PUT 請求
-      const res = await axios.put(
+      await axios.put(
         `${BASE_URL}/v2/api/${API_PATH}/admin/article/${tempArticle.id}`,
         { data: requestData } 
       );
@@ -151,7 +143,7 @@ const AdminArticles= ()=> {
       getArticles();
       handelCloseArticleModal();
     } catch (error) {
-      alert("更新文章失敗");
+      console.error("取得文章失敗", error?.message || error);
     }
   };
   const deleteArticle = async () => {
@@ -160,7 +152,7 @@ const AdminArticles= ()=> {
         `${BASE_URL}/v2/api/${API_PATH}/admin/article/${tempArticle.id}`
       );
     } catch (error) {
-      alert("刪除文章失敗");
+      console.error("刪除文章失敗", error?.message || error);
     }
   };
   const handleDeleteArticle = async () => {
@@ -169,7 +161,7 @@ const AdminArticles= ()=> {
       getArticles();
       handelCloseDelArticleModal();
     } catch (error) {
-      alert("刪除文章失敗");
+      console.error("刪除文章失敗", error?.message || error);
     }
   };
   return (

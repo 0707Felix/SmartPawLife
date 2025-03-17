@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef,useCallback } from "react";
 import axios from "axios";
 import ReactLoading from "react-loading";
 import { toast, ToastContainer } from "react-toastify";
@@ -20,10 +20,19 @@ const Information = () => {
   const [isScreenLoading, setIsScreenLoading] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const { id: product_id } = useParams();
-  const [cart, setCart] = useState({});
   const swiperRefup = useRef(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  
+
+  const getCart = useCallback(async () => {
+    try {
+      const res = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/cart`);
+      dispatch(updateCartData(res.data.data));
+    } catch (error) {
+      console.error("取得購物車失敗:", error);
+    }
+  }, [dispatch]); 
 
   useEffect(() => {
     const getProduct = async () => {
@@ -43,7 +52,7 @@ const Information = () => {
     };
     getProduct();
     getAllProduct();
-  }, [product_id]);
+  }, [product_id, getCart]);
 
   useEffect(() => {
     new Swiper(swiperRefup.current, {
@@ -87,21 +96,10 @@ const Information = () => {
       );
       setAllProducts(res.data.products);
     } catch (error) {
-      alert("取得商品失敗");
+      console.error("取得商品失敗", error.response?.data || error.message);
     }
   };
 
-  // 取得購物車列表
-  const getCart = async () => {
-    try {
-      const res = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/cart`);
-      setCart(res.data.data);
-      dispatch(updateCartData(res.data.data));
-    } catch (error) {
-      toast.error("❌ 取得購物車列表失敗！");
-      console.error("取得購物車列表錯誤:", error);
-    }
-  };
 
   // 加入購物車
   const addCartItem = async (

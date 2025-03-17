@@ -2,9 +2,11 @@ import { useEffect, useState, useRef } from "react";
 import axios from "axios";
 import { Modal } from "bootstrap";
 
+const BASE_URL = import.meta.env.VITE_BASE_URL;
+const API_PATH = import.meta.env.VITE_API_PATH;
+
+
 const AdminProducts= ()=> {
-  const BASE_URL = import.meta.env.VITE_BASE_URL;
-  const API_PATH = import.meta.env.VITE_API_PATH;
 
   const defaultModalState = {
     imageUrl: "",
@@ -30,27 +32,17 @@ const AdminProducts= ()=> {
       );
       setProducts(Object.values(res.data.products) || []);
     } catch (error) {
-      alert("取得產品失敗");
+      console.error("取得產品失敗", error.response?.data || error.message);
     }
   };
 
-  const checkUserLogin = async () => {
-    const url = `${BASE_URL}/v2/api/user/check`; // 設定 URL
-    console.log("發送的請求 URL:", url); // 輸出 URL
-    try {
-      await axios.post(`${BASE_URL}/v2/api/user/check`);
-      getProducts();
-    } catch (error) {
-      console.error(error);
-    }
-  };
   useEffect(() => {
+    getProducts();
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
     axios.defaults.headers.common["Authorization"] = token;
-    checkUserLogin();
   }, []);
 
   useEffect(() => {
@@ -161,7 +153,7 @@ const AdminProducts= ()=> {
       getProducts();
       handelCloseproductModal();
     } catch (error) {
-      alert("編輯產品失敗");
+      console.error("編輯產品失敗", error.response?.data || error.message);;
     }
   };
   const deleteProduct = async () => {
@@ -170,7 +162,7 @@ const AdminProducts= ()=> {
         `${BASE_URL}/v2/api/${API_PATH}/admin/product/${tempProduct.id}`
       );
     } catch (error) {
-      alert("刪除產品失敗");
+      console.error("刪除產品失敗", error.response?.data || error.message);;
     }
   };
   const handleDeleteProduct = async () => {
@@ -179,7 +171,7 @@ const AdminProducts= ()=> {
       getProducts();
       handelCloseDelproductModal();
     } catch (error) {
-      alert("刪除產品失敗");
+      console.error("刪除產品失敗", error.response?.data || error.message);;
     }
   };
   return (

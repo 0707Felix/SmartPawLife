@@ -11,7 +11,7 @@ const Article = () => {
       const res = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/articles`);
       setArticles(res.data.articles);
     } catch (error) {
-      alert("取得文章失敗");
+      console.error("取得文章失敗", error.response?.data || error.message);
     }
   };
 

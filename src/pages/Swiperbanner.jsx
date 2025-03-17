@@ -81,6 +81,8 @@ const Swiperbanner = () => {
                 className="form-control p-3"
                 type="search"
                 placeholder="季節主打商品熱賣中"
+                id="search" 
+                name="search" 
                 aria-label="Search"
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}

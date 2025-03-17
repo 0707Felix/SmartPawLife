@@ -67,10 +67,10 @@ const Footer = () => {
           </div>
           <div className="text-center pt-2 pb-5 text-gray2">
             <p>
-              SmartPaw Life股份有限公司：100 台北市中正區重慶南路一段 122 號
+              SmartPaw Life股份有限公司:100 台北市中正區重慶南路一段 122 號
             </p>
             <p>
-              版權所有：© Copyright 2024 S﻿martPaw Life. All Rights Reserved
+              版權所有：© Copyright 2024 SmartPaw Life. All Rights Reserved
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate,Link } from "react-router-dom";
+import { useState} from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Login = () => {
@@ -9,6 +9,7 @@ const Login = () => {
   });
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -22,50 +23,68 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/v2/admin/signin`, account);
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}/v2/admin/signin`,
+        account
+      );
       const { token, expired } = response.data;
       document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
-      navigate("/admin"); // 成功登入後導向後台主頁
+      navigate("/admin");
     } catch (error) {
-      setError("登入失敗，請檢查帳號或密碼");
+      console.error("登入失敗，請檢查帳號或密碼:", error.response?.data || error);
+      setError(
+        `登入失敗，請檢查帳號或密碼: ${
+          error.response?.data?.message || "未知錯誤"
+        }`
+      );
     }
   };
 
   return (
     <div className="container">
-        <h1 className="mt-80 mb-4 text-center">使用者後台登入系統</h1>
-        {error && <div className="alert alert-danger w-50 text-center">{error}</div>}
-        <form onSubmit={handleLogin} className="d-flex flex-column align-items-center gap-3 p-3">
-          <div className="mb-3">
-            <label htmlFor="username" className="form-label fs-4 fw-bold">帳號</label>
-            <input
-              type="email"
-              className="form-control"
-              id="username"
-              name="username"
-              value={account.username}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-3">
-            <label htmlFor="password" className="form-label fs-4 fw-bold">密碼</label>
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              name="password"
-              value={account.password}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <button type="submit" className="btn btn-primary fs-3 mb-120">
-            登入
-          </button>
-        </form>
-      </div>
-
+      <h1 className="mt-80 mb-4 text-center">使用者後台登入系統</h1>
+      {error && (
+        <div className="alert alert-danger w-50 text-center">{error}</div>
+      )}
+      <form
+        onSubmit={handleLogin}
+        className="d-flex flex-column align-items-center gap-3 p-3"
+      >
+        <div className="mb-3">
+          <label htmlFor="username" className="form-label fs-4 fw-bold">
+            帳號
+          </label>
+          <input
+            type="email"
+            className="form-control"
+            id="username"
+            name="username"
+            value={account.username}
+            onChange={handleInputChange}
+            required
+            autoComplete="username"
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="password" className="form-label fs-4 fw-bold">
+            密碼
+          </label>
+          <input
+            type="password"
+            className="form-control"
+            id="password"
+            name="password"
+            value={account.password}
+            onChange={handleInputChange}
+            required
+            autoComplete="current-password"
+          />
+        </div>
+        <button type="submit" className="btn btn-primary fs-3 mb-120">
+          登入
+        </button>
+      </form>
+    </div>
   );
 };
 

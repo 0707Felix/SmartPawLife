@@ -5,7 +5,7 @@ import ReactLoading from "react-loading";
 import Swiper from "swiper";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { removeCartItemFromState } from "../redux/cartSlice";
 
 const BASE_URL = import.meta.env.VITE_BASE_URL;
@@ -61,7 +61,7 @@ const Cart = () => {
       const res = await axios.get(`${BASE_URL}/v2/api/${API_PATH}/cart`);
       setCart(res.data.data);
     } catch (error) {
-      alert("取得購物車列表失敗");
+      console.error("取得購物車商品失敗", error.response?.data || error.message);
     }
   };
 
@@ -73,7 +73,7 @@ const Cart = () => {
       );
       setAllProducts(res.data.products);
     } catch (error) {
-      alert("取得商品失敗");
+      console.error("取得商品失敗", error.response?.data || error.message);
     }
   };
 
@@ -91,8 +91,7 @@ const Cart = () => {
       // 再重新取得最新的購物車資料，確保同步
       await getCart();
     } catch (error) {
-      alert("刪除購物車商品失敗");
-      // 如果 API 失敗，將商品重新加回 Redux（Rollback 機制）
+      console.error("刪除購物車商品失敗", error.response?.data || error.message);
       getCart();
     } finally {
       setIsScreenLoading(false);
@@ -110,7 +109,7 @@ const Cart = () => {
       });
       getCart();
     } catch (error) {
-      alert("刪除購物車失敗");
+      console.error("刪除購物車商品失敗", error.response?.data || error.message);
     } finally {
       setIsScreenLoading(false);
     }
@@ -121,7 +120,7 @@ const Cart = () => {
       setDisCountCode(e.target.value)
   }
 
-   const useDiscountCode = async(code)=>{
+   const getDiscountCode = async(code)=>{
     try{
     const res = await axios.post(`${BASE_URL}/v2/api/${API_PATH}/coupon`,
         {
@@ -130,12 +129,19 @@ const Cart = () => {
         }
       }
     );
-    console.log(res.data);
-    getCart(); // 每次折扣碼變化時更新購物車
+    return res.data;
     }catch(error){
       console.error("提交折扣失敗",error.response?.data || error);
     }
    }
+   const handleApplyDiscount = async () => {
+    try {
+      await getDiscountCode(disCountCode);
+      getCart(); 
+    } catch (error) {
+      console.error("應用折扣代碼時出現錯誤:", error);
+    }
+  };
 
   return (
     <div className="container-fluid">
@@ -258,11 +264,13 @@ const Cart = () => {
                   aria-describedby="button-addon2"
                   value={disCountCode}
                   onChange={discountInput}
+                  id="discountCodeInput" // 新增 id
+                  name="discountCode" // 新增 name
                 />
                 
                 <div className="input-group-append">
                   <button
-                    onClick={()=>{useDiscountCode(disCountCode)}}
+                    onClick={handleApplyDiscount}
                     className="btn btn-outline-dark border-bottom border-top-0 border-start-0 border-end-0 rounded-0"
                     type="button"
                     id="button-addon2"
@@ -283,7 +291,7 @@ const Cart = () => {
                     </tr>
                     <tr>
                       <td>省下金額</td>
-                      <td className="text-end">NT${cart.total-cart.final_total}元</td>
+                      <td className="text-end">NT${cart.total-cart.final_total}</td>
                     </tr>
                   </tbody>
                 </table>

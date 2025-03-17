@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState} from "react";
 import axios from "axios";
 import { Modal } from "bootstrap";
 
@@ -63,16 +63,6 @@ const AdminOrders = () => {
     }
   };
 
-  const checkUserLogin = async () => {
-    try {
-      await axios.post(`${BASE_URL}/v2/api/user/check`);
-      getOrders();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-
   const delOrder = async (id) => {
     try {
       const response = await axios.delete(
@@ -90,13 +80,14 @@ const AdminOrders = () => {
     }
   };
 
+
   useEffect(() => {
+    getOrders();
     const token = document.cookie.replace(
-      /(?:(?:^|.*;\s*)hexToken\s*\=\s*([^;]*).*$)|^.*$/,
+      /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
       "$1"
     );
     axios.defaults.headers.common["Authorization"] = token;
-    checkUserLogin();
   }, []);
 
   return (
